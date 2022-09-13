@@ -5,50 +5,61 @@ let titletext = document.querySelector('.titletext');
 let display = document.querySelector('.display');
 let mode = '';
 let gridWidth = 50;
+let drawing = false;
+let colorvalue = '#000000';
 
-function typeWriter() {
+function textAnimation() {
   if (i < txt.length) {
     titletext.textContent += txt[i];
     i++;
-    setTimeout(typeWriter, speed);
+    setTimeout(textAnimation, speed);
   }
 }
 
 window.onload = function() {
-    typeWriter();
+    textAnimation();
 }
+
+display.addEventListener('mousedown', ()=>{
+    if(mode != 'pen'){ return; }
+    drawing = true;
+})  
 
 drawGrid();
 
 let penbutton = document.querySelector('#penbutt');
 let clearbutton = document.querySelector('#clearbutt');
 let eraserbutton = document.querySelector('#eraserbutt');
+let colorselector = document.querySelector('.colorselector');
+
+colorselector.addEventListener('change', ()=>{
+    colorvalue = colorselector.value;
+})
 
 penbutton.addEventListener('click', () => {
+    penbutton.style.backgroundColor = 'green';
+    clearbutton.style.backgroundColor = 'white';
+    eraserbutton.style.backgroundColor = 'white';
     mode = 'pen';
-    console.log(mode);
+    colorvalue = colorselector.value;
 })
 
 clearbutton.addEventListener('click', () => {
-    mode = 'clear';
+    clearbutton.style.backgroundColor = 'green';
+    penbutton.style.backgroundColor = 'white';
+    eraserbutton.style.backgroundColor = 'white';
     clearGrid();
-    console.log(mode);
+    drawGrid();
+    mode = 'clear';
 })
 
 eraserbutton.addEventListener('click', () => {
-    mode = 'eraser';
-    console.log(mode);
+    eraserbutton.style.backgroundColor = 'green';
+    penbutton.style.backgroundColor = 'white';
+    clearbutton.style.backgroundColor = 'white';
+    colorvalue = '#FFFFFF';
 })
 
-let drawing = false;
-
-display.addEventListener('mousedown', (e)=>{
-    dr
-})
-
-display.addEventListener('mouseup', ()=>{
-    drawing = false;
-})
 
 let slider = document.querySelector('.gridselector');
 slider.addEventListener('change', () => {
@@ -56,7 +67,6 @@ slider.addEventListener('change', () => {
     clearGrid();
     gridWidth = tempWidth.value;
     drawGrid();
-
 })
 
 
@@ -68,6 +78,10 @@ function drawGrid(){
         for(let j = 0; j < gridWidth; j++){
             let cell = document.createElement('div');
             cell.className = 'cell';
+            cell.addEventListener('mouseover', changeColor);
+            cell.addEventListener('mouseup', ()=>{
+                drawing = false;
+            })
             row.appendChild(cell);
         }
     }
@@ -77,12 +91,12 @@ function clearGrid(){
     display.innerHTML = '';
 }
 
-function draw(){
-    let cells = document.querySelectorAll('.cell');
-    cells.forEach(cell => {
-        cell.addEventListener('mouseover', ()=>{
-            cell.style.backgroundColor = 'black';
-        })
-    })
+function changeColor(e){
+    if(e.type === 'mouseover' && drawing == false){return;}
+    else{
+        e.target.style.backgroundColor = colorvalue;
+    }
 }
+
+
 

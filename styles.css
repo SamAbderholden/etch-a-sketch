@@ -59,6 +59,7 @@
 }
 
 #clear{
+    background-color: none;
     height: 100%;
     width: auto;
 }
