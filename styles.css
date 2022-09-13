@@ -1,0 +1,143 @@
+@font-face {
+    font-family: 'KiwiDays';
+    src: url('fonts/Kiwi\ Days.ttf');
+}
+
+.background{
+    background-color: #7C9F31;
+    padding: 10px;
+    margin: -10px -10px -10px -10px;
+}
+
+.footer{
+    background-color:darkkhaki;
+    padding: 20px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'KiwiDays', sans-serif;
+    border: 10px solid black;
+}
+
+
+.title{
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background-color:darkkhaki;
+    border: 10px solid black;
+    color: black;
+    font-family: 'KiwiDays', sans-serif;
+    font-size: 50px;
+    text-shadow: 3px 2px white;
+}
+
+.choice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
+}
+
+#eraser{
+    height: 100%;
+    width: auto;
+}
+
+#pen{
+    height: 100%;
+    width: auto;
+}
+
+#clear{
+    height: 100%;
+    width: auto;
+}
+
+.application{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 650px;
+    border-top: 10px;
+}
+
+.tools{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    font-family: 'KiwiDays', sans-serif;
+    background-color:darkkhaki;
+    height: 600px;
+    width: 250px;
+    font-size: 25px;
+    gap: 15px;
+}
+
+.display{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 600px;
+    width: 600px;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.cell{
+    width: 100%;
+    height: 100%;
+}
+
+
+.colorwrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    height: 80px;
+    width: 80px;
+
+}
+
+.colorselector{
+    height: 70px;
+    width: 70px;
+    background: none;
+    border-style: none;
+}
+
+.gridselector{
+    outline: none;
+    background: #d3d3d3;
+    background-color: none;
+}
+
+.slidewrapper{
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Etch-a-Sketch</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <div class="background">
+    <div class="title"><p class="titletext"></p></div>
+      <div class="application">
+        <div class="menu">
+          <p>Tools</p>
+            <div class="tools">
+              <button class="choice" id="eraserbutt"><img id="eraser" src="images/erasericon.png"></button>
+              <button class="choice" id="penbutt"><img id="pen" src="images/drawicon.png"></button>
+              <button class="choice" id="clearbutt"><img id="clear" src="images/clearicon.png"></button>
+            </div>
+          <p>Color</p>
+            <div class="colorwrapper">
+              <input type="color" class="colorselector">
+            </div>
+          <p>Grid Size</p>
+          <div class="slidewrapper">
+              <input type="range" min="1" max="100" value="50" class="gridselector" oninput="document.querySelector('.gridsize1').value = document.querySelector('.gridsize2').value = this.value">
+              <div>
+                <output class="gridsize1">50</output>x<output class="gridsize2">50</output>
+              </div>
+          </div>
+        </div>
+        <div class="display">
+        </div>
+      </div>
+    <footer class="footer">Created by Sam Abderholden</footer>
+  </div>
+</html>
