@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Etch-a-Sketch</title>
     <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <div class="background">
@@ -23,10 +25,11 @@
           <p>Grid Size</p>
           <div class="slidewrapper">
               <input type="range" min="1" max="100" value="50" class="gridselector" oninput="document.querySelector('.gridsize1').value = document.querySelector('.gridsize2').value = this.value">
-              <div>
+              <div id="outputdisplay">
                 <output class="gridsize1">50</output>x<output class="gridsize2">50</output>
               </div>
           </div>
+          <button class="download"><img id="downloadbuttonimage" src="images/icons8-download-30.png"></button>
         </div>
         <div class="display">
         </div>

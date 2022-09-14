@@ -1,3 +1,4 @@
+
 var i = 0;
 var txt = 'Etch-A-Sketch';
 var speed = 75;
@@ -16,14 +17,17 @@ function textAnimation() {
   }
 }
 
+
 window.onload = function() {
     textAnimation();
 }
 
+/*
 display.addEventListener('mousedown', ()=>{
     if(mode != 'pen'){ return; }
     drawing = true;
 })  
+*/
 
 drawGrid();
 
@@ -78,7 +82,11 @@ function drawGrid(){
         for(let j = 0; j < gridWidth; j++){
             let cell = document.createElement('div');
             cell.className = 'cell';
+            cell.addEventListener('mousedown', changeColor)
             cell.addEventListener('mouseover', changeColor);
+            cell.addEventListener('dragstart', (e) =>{
+                e.preventDefault();
+            })
             cell.addEventListener('mouseup', ()=>{
                 drawing = false;
             })
@@ -92,11 +100,27 @@ function clearGrid(){
 }
 
 function changeColor(e){
-    if(e.type === 'mouseover' && drawing == false){return;}
-    else{
-        e.target.style.backgroundColor = colorvalue;
+    if(mode != 'pen'){
+        return;
     }
+    if(e.type === 'mousedown'){
+        e.target.style.backgroundColor = colorvalue;
+        drawing = true;
+        return;
+    }
+    if(e.type === 'mouseover' && drawing == false){
+        return;
+    }
+    e.target.style.backgroundColor = colorvalue;
 }
+
+let downloadbutt = document.querySelector('.download');
+downloadbutt.addEventListener('click', ()=>{
+    domtoimage.toBlob(display)
+        .then(function(blob){
+            window.saveAs(blob,"Drawing.png");
+        })
+})
 
 
 
